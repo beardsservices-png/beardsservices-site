@@ -1,0 +1,43 @@
+{
+  "name": "Beard's Home Services",
+  "short_name": "Beard's",
+  "description": "Professional handyman and home repair services in Mountain Home, AR. Metal roofing, concrete, decks, bathroom remodels, flooring, and 99+ services.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#1a3a5c",
+  "categories": ["business", "utilities", "lifestyle"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Call Brian",
+      "short_name": "Call",
+      "description": "Call Beard's Home Services now",
+      "url": "/?action=call&utm_source=pwa_shortcut",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Get a Free Quote",
+      "short_name": "Quote",
+      "description": "Request a free estimate",
+      "url": "/?utm_source=pwa_shortcut#contact",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Our Work Gallery",
+      "short_name": "Gallery",
+      "description": "See recent projects",
+      "url": "/?utm_source=pwa_shortcut#gallery",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

@@ -18,6 +18,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/png" href="/LOGO.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#1a3a5c">
+  <meta name="color-scheme" content="light">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Beard's">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="robots" content="index, follow">
   <meta name="geo.region" content="US-AR">
   <meta name="geo.placename" content="Mountain Home, AR">
@@ -116,6 +126,7 @@
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <nav>
   <a href="/" class="logo">
@@ -133,6 +144,7 @@
   </ul>
   <a href="tel:+18703211072" class="phone-nav">(870) 321-1072</a>
 </nav>
+<div id="main" tabindex="-1"></div>
 
 <div class="hero">
   <img src="/LOGO.png" alt="Beard's Home Services" class="hero-logo">
@@ -521,13 +533,41 @@
     </div>
     <div class="contact-grid">
       <div class="contact-form">
-        <form action="mailto:brianb@beardsservices.com" method="POST" enctype="text/plain">
-          <input type="text" name="name" placeholder="Your Name" required>
-          <input type="tel" name="phone" placeholder="Phone Number" required>
-          <input type="email" name="email" placeholder="Email Address">
-          <input type="text" name="service" placeholder="Type of Service Needed">
-          <textarea name="message" placeholder="Describe your project"></textarea>
+        <form id="quote-form" action="mailto:brianb@beardsservices.com" method="POST" enctype="text/plain">
+          <div class="form-row">
+            <label for="qf-name">Name <span aria-hidden="true">*</span></label>
+            <input id="qf-name" type="text" name="name" autocomplete="name" placeholder="Your name" required>
+          </div>
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="qf-phone">Phone <span aria-hidden="true">*</span></label>
+              <input id="qf-phone" type="tel" name="phone" autocomplete="tel" placeholder="(870) 000-0000" required>
+            </div>
+            <div class="form-row">
+              <label for="qf-email">Email</label>
+              <input id="qf-email" type="email" name="email" autocomplete="email" placeholder="you@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="qf-service">Service needed</label>
+            <select id="qf-service" name="service">
+              <option value="" disabled selected>Select a service…</option>
+              <option>Metal Roofing</option>
+              <option>Concrete Work</option>
+              <option>Deck / Porch</option>
+              <option>Bathroom Remodel</option>
+              <option>Flooring</option>
+              <option>General Handyman / Repairs</option>
+              <option>Excavation / Drainage</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="qf-message">Project details</label>
+            <textarea id="qf-message" name="message" placeholder="Tell Brian what you need — the more detail, the better."></textarea>
+          </div>
           <button type="submit">Send Message</button>
+          <p class="form-note" role="status" aria-live="polite" id="qf-note">Prefer to talk? Call or text <a href="tel:+18703211072">(870)&nbsp;321-1072</a> — Brian usually responds the same day.</p>
         </form>
       </div>
       <div class="contact-info">
@@ -644,7 +684,49 @@
     if (e.key === 'ArrowLeft') prevImage();
     if (e.key === 'ArrowRight') nextImage();
   });
+
+  // Swipe navigation for the lightbox on touch devices.
+  (function () {
+    var lb = document.getElementById('lightbox'), startX = null;
+    lb.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) { dx < 0 ? nextImage() : prevImage(); }
+      startX = null;
+    }, { passive: true });
+  })();
+
+  // Progressive enhancement: build a clean, reliable mailto from the quote form.
+  (function () {
+    var form = document.getElementById('quote-form');
+    if (!form) return;
+    var note = document.getElementById('qf-note');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      var name = v('qf-name'), phone = v('qf-phone'), email = v('qf-email'),
+          service = v('qf-service'), message = v('qf-message');
+      var subject = 'Quote request' + (service ? ' — ' + service : '') + (name ? ' (' + name + ')' : '');
+      var body =
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Email: ' + (email || '—') + '\n' +
+        'Service: ' + (service || '—') + '\n\n' +
+        'Details:\n' + (message || '—');
+      window.location.href = 'mailto:brianb@beardsservices.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+      if (note) {
+        note.classList.add('success');
+        note.innerHTML = 'Opening your email app… If nothing happens, call or text <a href="tel:+18703211072">(870)&nbsp;321-1072</a>.';
+      }
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'quote_form' });
+    });
+  })();
 </script>
 
+<script src="/site.js" defer></script>
 </body>
 </html>
