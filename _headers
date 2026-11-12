@@ -1,0 +1,10 @@
+# Keep the Cloudflare preview copies of the site out of search results.
+# The real site is beardshomeservices.com.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://*.workers.dev/*
+  X-Robots-Tag: noindex
