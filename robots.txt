@@ -3,7 +3,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /cdn-cgi/
 
 # AI search / assistant crawlers — welcome, so the business shows up in AI answers
 User-agent: GPTBot
