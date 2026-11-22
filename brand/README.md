@@ -43,3 +43,14 @@ light chip.
 Generated from the root `LOGO.png`, which despite its name is a **WebP** file
 (694×694, RGB, no alpha, flat `#F1F5FD` ground). It is kept as-is because the
 site references it; use the files in this folder for anything new.
+
+## Vendor upload files (`brand/logo/`)
+
+Full logo (house + beard, no wordmark) with the background removed, for hat/patch/print vendors. Download page: `/logo-files.html` (unlisted, noindex).
+
+| File | Use |
+|---|---|
+| `logo/BHS-logo-transparent.png` | Original artwork's own pixels, background erased, upscaled 4x (2196x2725). Best fidelity. |
+| `logo/BHS-logo-vector.pdf` / `.svg` / `.eps` | Colour trace of the artwork for vendors that require vector. Slightly simplified; not the designer's original. |
+
+The only original is the 694 px raster (`LOGO.png`, also in Drive "Logo" folder). No vector source exists.
