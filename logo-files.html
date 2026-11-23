@@ -18,57 +18,51 @@
     header h1 { margin:0; font-family:'Oswald',Arial,sans-serif; font-weight:600; font-size:1.5rem; letter-spacing:.03em; text-transform:uppercase; }
     header p { margin:4px 0 0; font-size:.9rem; opacity:.85; }
     main { max-width:640px; margin:0 auto; padding:16px; }
+    .set { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; margin-bottom:18px; }
+    .set h2 { margin:0; font-family:'Oswald',Arial,sans-serif; font-weight:500; font-size:1.2rem; color:var(--navy); }
+    .set h2 .tag { display:inline-block; font-family:'Open Sans',Arial,sans-serif; font-size:.72rem; font-weight:600; background:#e8f1f8; color:var(--navy); padding:2px 8px; border-radius:99px; margin-left:6px; vertical-align:middle; }
+    .set > p { margin:4px 0 10px; color:var(--gray); font-size:.9rem; }
     .preview { background-color:#fff;
       background-image:linear-gradient(45deg,#e6e9ee 25%,transparent 25%),linear-gradient(-45deg,#e6e9ee 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e6e9ee 75%),linear-gradient(-45deg,transparent 75%,#e6e9ee 75%);
       background-size:20px 20px; background-position:0 0,0 10px,10px -10px,-10px 0;
-      border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center; }
-    .preview img { max-width:70%; height:auto; display:block; margin:0 auto; }
-    .preview small { display:block; margin-top:8px; color:var(--gray); }
-    .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin-top:14px; }
-    .card h2 { margin:0; font-family:'Oswald',Arial,sans-serif; font-weight:500; font-size:1.15rem; color:var(--navy); }
-    .card p { margin:4px 0 10px; color:var(--gray); font-size:.92rem; }
-    .btn { display:block; text-align:center; background:var(--navy); color:#fff; text-decoration:none; font-weight:600; padding:14px; border-radius:10px; font-size:1rem; }
+      border:1px solid var(--line); border-radius:10px; padding:12px; }
+    .preview img { max-width:62%; height:auto; display:block; margin:0 auto; }
+    .file { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:10px; }
+    .file span { font-size:.88rem; color:var(--gray); }
+    .file b { display:block; color:var(--ink); font-size:.95rem; }
+    .btn { flex:none; text-align:center; background:var(--navy); color:#fff; text-decoration:none; font-weight:600; padding:12px 18px; border-radius:10px; font-size:.95rem; }
     .btn:active { opacity:.85; }
-    .tag { display:inline-block; font-size:.72rem; font-weight:600; background:#e8f1f8; color:var(--navy); padding:2px 8px; border-radius:99px; margin-left:6px; vertical-align:middle; }
-    .note { margin-top:18px; font-size:.85rem; color:var(--gray); }
+    .note { margin-top:6px; font-size:.85rem; color:var(--gray); }
   </style>
 </head>
 <body>
   <header>
     <h1>Logo files</h1>
-    <p>Pick one to upload to a vendor site</p>
+    <p>Pick a color version, then a file type</p>
   </header>
   <main>
-    <div class="preview">
-      <img src="/brand/logo/preview.png" alt="Beard's Home Services logo: a house with dormer windows above a full beard" width="600" height="745">
-      <small>Background is transparent (checkerboard shows through)</small>
-    </div>
 
-    <div class="card">
-      <h2>PNG, transparent <span class="tag">TRY FIRST</span></h2>
-      <p>The real logo with the background removed. 2196 × 2725 px, 5.7 MB. Works on most upload forms.</p>
-      <a class="btn" href="/brand/logo/BHS-logo-transparent.png" download>Download PNG</a>
-    </div>
+    <section class="set">
+      <h2>No teal <span class="tag">MY PICK</span></h2>
+      <p>Navy roof, black beard, white trim, grey-blue siding.</p>
+      <div class="preview"><img src="/brand/logo/preview-noteal.png" alt="Logo with grey-blue siding instead of teal" width="600" height="745"></div>
+      <div class="file"><span><b>PNG, transparent</b>Try first. 2196 x 2725 px, 5.7 MB</span><a class="btn" href="/brand/logo/BHS-logo-noteal-transparent.png" download>Download</a></div>
+      <div class="file"><span><b>PDF, vector</b>Most patch makers accept it. 2.3 MB</span><a class="btn" href="/brand/logo/BHS-logo-noteal-vector.pdf" download>Download</a></div>
+      <div class="file"><span><b>SVG, vector</b>Web vector format. 4.6 MB</span><a class="btn" href="/brand/logo/BHS-logo-noteal-vector.svg" download>Download</a></div>
+      <div class="file"><span><b>EPS, vector</b>Older print format. 6.5 MB</span><a class="btn" href="/brand/logo/BHS-logo-noteal-vector.eps" download>Download</a></div>
+    </section>
 
-    <div class="card">
-      <h2>PDF, vector</h2>
-      <p>Sharp at any size. Most patch and hat makers accept this. 2.3 MB.</p>
-      <a class="btn" href="/brand/logo/BHS-logo-vector.pdf" download>Download PDF</a>
-    </div>
+    <section class="set">
+      <h2>Original colors</h2>
+      <p>The real logo, including the teal siding.</p>
+      <div class="preview"><img src="/brand/logo/preview.png" alt="Original logo with teal siding" width="600" height="745"></div>
+      <div class="file"><span><b>PNG, transparent</b>2196 x 2725 px, 5.7 MB</span><a class="btn" href="/brand/logo/BHS-logo-transparent.png" download>Download</a></div>
+      <div class="file"><span><b>PDF, vector</b>2.3 MB</span><a class="btn" href="/brand/logo/BHS-logo-vector.pdf" download>Download</a></div>
+      <div class="file"><span><b>SVG, vector</b>4.6 MB</span><a class="btn" href="/brand/logo/BHS-logo-vector.svg" download>Download</a></div>
+      <div class="file"><span><b>EPS, vector</b>6.5 MB</span><a class="btn" href="/brand/logo/BHS-logo-vector.eps" download>Download</a></div>
+    </section>
 
-    <div class="card">
-      <h2>SVG, vector</h2>
-      <p>Same vector art in web format. 4.6 MB.</p>
-      <a class="btn" href="/brand/logo/BHS-logo-vector.svg" download>Download SVG</a>
-    </div>
-
-    <div class="card">
-      <h2>EPS, vector</h2>
-      <p>Same vector art in the older print format some vendors ask for. 6.5 MB.</p>
-      <a class="btn" href="/brand/logo/BHS-logo-vector.eps" download>Download EPS</a>
-    </div>
-
-    <p class="note">The three vector files are a trace of the original artwork, so they are slightly simplified. Your original logo only exists as a 694 px image, and the PNG is the closest copy of it.</p>
+    <p class="note">The vector files are a trace of the original artwork, so they are slightly simplified. The original logo only exists as a 694 px image, and the PNG is the closest copy of it.</p>
   </main>
 </body>
 </html>

@@ -50,7 +50,9 @@ Full logo (house + beard, no wordmark) with the background removed, for hat/patc
 
 | File | Use |
 |---|---|
-| `logo/BHS-logo-transparent.png` | Original artwork's own pixels, background erased, upscaled 4x (2196x2725). Best fidelity. |
+| `logo/BHS-logo-transparent.png` | Original colors (teal siding). Original artwork's own pixels, background erased, upscaled 4x (2196x2725). Best fidelity. |
 | `logo/BHS-logo-vector.pdf` / `.svg` / `.eps` | Colour trace of the artwork for vendors that require vector. Slightly simplified; not the designer's original. |
 
 The only original is the 694 px raster (`LOGO.png`, also in Drive "Logo" folder). No vector source exists.
+
+**No-teal set** (`logo/BHS-logo-noteal-*`: png, pdf, svg, eps): same art with the teal siding/windows recolored to the roof's steel blue. Owner prefers no teal on hats (22 Nov 2026). Everything else (navy roof, black beard, white trim) is unchanged.
